@@ -19,7 +19,7 @@ const Results = ({ result }) => {
   return (
     <div style={boxStyle}>
       <p style={textStyle}>The results are in, based on your needs:</p>
-      <p>Total cost: ${result}</p>
+      <p>Total cost per month: ${result}</p>
     </div>
   );
 };

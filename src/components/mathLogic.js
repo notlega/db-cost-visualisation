@@ -14,8 +14,12 @@ export const mathLogic = (
     roomsBits(numRooms) +
     messagesBits(numMessages) +
     categoriestoBits(numCategories) +
-    paramsToBits(numParams);
-  const totalGB = bitsToGB(totalBits);
+    paramsToBits(numParams) +
+    advertisementsToBits(4) +
+    listingBookmarkToBits(4) +
+    companyBookmarkToBits(4) +
+    companyCommentsToBits(2);
+  const totalGB = bitsToGiB(totalBits);
   const totalCosts = totalCost(totalGB);
   return totalCosts;
 };
@@ -47,16 +51,32 @@ function paramsToBits(numParams) {
   return numParams * 593;
 }
 
-function bitsToGB(bits) {
-  const bytes = bits / 8;
-  const gigabytes = bytes / 1024 / 1024 / 1024;
-  return gigabytes.toFixed(2);
+function advertisementsToBits(numAdvertisements) {
+  return numAdvertisements * 49365;
 }
 
-function totalCost(gb) {
+function listingBookmarkToBits(numListingBookmarks) {
+  return numListingBookmarks * 288;
+}
+
+function companyBookmarkToBits(numCompanyBookmarks) {
+  return numCompanyBookmarks * 288;
+}
+
+function companyCommentsToBits(numCompanyComments) {
+  return numCompanyComments * 310;
+}
+
+function bitsToGiB(bits) {
+  const bytes = bits / 8;
+  const gibibytes = bytes / Math.pow(2, 30);
+  return gibibytes.toFixed(2);
+}
+
+function totalCost(gib) {
   let cost = 0;
-  if (gb > 5) {
-    cost = (gb - 5) * 0.1;
+  if (gib > 10) {
+    cost = (gib - 10) * 0.2;
     cost = +cost.toFixed(2); // round to 2 decimal places
   }
   return cost;

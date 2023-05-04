@@ -55,6 +55,12 @@ const App = () => {
     });
   }
 
+  const preventNegativeInput = (event) => {
+    if (event.key === '-') {
+      event.preventDefault();
+    }
+  };
+  
   const styles = {
     backgroundColor: 'white',
     height: '100vh',
@@ -189,9 +195,9 @@ const App = () => {
                   inputName: 'numUsersActive',
                 },
                 {
-                  label: 'Number of listings per user per year',
+                  label: 'Number of listings per user per month',
                   defaultValue: 10,
-                  tooltip: 'Number of listings per user per year.',
+                  tooltip: 'Number of listings per user per month.',
                   inputName: 'numListings',
                 },
                 {
@@ -234,6 +240,7 @@ const App = () => {
                       defaultValue={defaultValue}
                       style={inputStyles}
                       onChange={(event) => handleInputChange(event, inputName)}
+                      onKeyPress={preventNegativeInput}
                     />
                   </td>
                 </tr>
