@@ -91,8 +91,8 @@ const App = () => {
   const buttonStyles = {
     // button should be at bottom right of the form
     alignItems: 'center',
-    backgroundColor: 'white',
-    color: 'darkblue',
+    backgroundColor: '#bf0202',
+    color: 'white',
     border: 'none',
     borderRadius: '8px',
     padding: '1rem',
@@ -105,11 +105,18 @@ const App = () => {
     width: '100px',
   };
 
+  const resetButtonStyles = {
+    ...buttonStyles,
+    backgroundColor: '#02b087',
+    color: 'white',
+  };
+
   const headerStyle = {
     // bring the header closer to the form
     marginBottom: '-1rem',
     textAlign: 'center',
   };
+
   const subheaderStyle = {
     marginBottom: '2rem',
     fontSize: '1.5rem',
@@ -118,6 +125,7 @@ const App = () => {
     margin: '1rem auto',
     color: '#555',
   };
+
   const tooltipStyle = {
     display: 'inline-block',
     marginLeft: '8px',
@@ -215,12 +223,12 @@ const App = () => {
                     onClick={handleFormSubmit}
                     style={buttonStyles}
                   >
-                    Submit
+                    Calculate
                   </button>
                   <button
                     type="reset"
                     style={{
-                      ...buttonStyles,
+                      ...resetButtonStyles,
                       marginLeft: '1rem',
                     }}
                   >
