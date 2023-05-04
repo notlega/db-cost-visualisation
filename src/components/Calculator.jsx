@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Results from './results';
 import Tippy from '@tippyjs/react';
+import Results from './results';
 import { mathLogic } from './mathLogic';
 
-const App = () => {
+function App() {
   const [showResults, setShowResults] = useState(false);
   const [inputs, setInputs] = useState({
     numCompany: 200,
@@ -27,7 +27,7 @@ const App = () => {
       inputs.numRooms,
       inputs.numMessages,
       inputs.numCategories,
-      inputs.numParams
+      inputs.numParams,
     );
     setResult(calculatedResult);
     setShowResults(true);
@@ -60,7 +60,7 @@ const App = () => {
       event.preventDefault();
     }
   };
-  
+
   const styles = {
     backgroundColor: 'white',
     height: '100vh',
@@ -227,8 +227,14 @@ const App = () => {
                 <tr key={label}>
                   <td style={tdStyles}>
                     {label}
-                    <Tippy content={tooltip} theme="custom-white-box">
-                      <span className="tooltip-icon" style={tooltipStyle}>
+                    <Tippy
+                      content={tooltip}
+                      theme="custom-white-box"
+                    >
+                      <span
+                        className="tooltip-icon"
+                        style={tooltipStyle}
+                      >
                         i
                       </span>
                     </Tippy>
@@ -246,7 +252,10 @@ const App = () => {
               ))}
               {/* submit and reset buttons */}
               <tr>
-                <td colSpan="2" style={{ textAlign: 'right' }}>
+                <td
+                  colSpan="2"
+                  style={{ textAlign: 'right' }}
+                >
                   <button
                     type="submit"
                     onClick={handleFormSubmit}
@@ -279,6 +288,6 @@ const App = () => {
       </div>
     </div>
   );
-};
+}
 
 export default App;

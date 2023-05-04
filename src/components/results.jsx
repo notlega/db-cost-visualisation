@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Results = ({ result }) => {
+function Results({ result }) {
   const boxStyle = {
     backgroundColor: '#02b087',
     padding: '2rem',
@@ -22,6 +22,6 @@ const Results = ({ result }) => {
       <p>Total cost per month: ${result}</p>
     </div>
   );
-};
+}
 
 export default Results;

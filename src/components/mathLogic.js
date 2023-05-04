@@ -1,32 +1,6 @@
-export const mathLogic = (
-  numCompany,
-  numUsersperCompany,
-  percentUsers,
-  numListings,
-  numRooms,
-  numMessages,
-  numCategories,
-  numParams
-) => {
-  const totalBits =
-    calculateUserBits(numCompany, numUsersperCompany, percentUsers) +
-    listingBits(numListings) +
-    roomsBits(numRooms) +
-    messagesBits(numMessages) +
-    categoriestoBits(numCategories) +
-    paramsToBits(numParams) +
-    advertisementsToBits(4) +
-    listingBookmarkToBits(4) +
-    companyBookmarkToBits(4) +
-    companyCommentsToBits(2);
-  const totalGB = bitsToGiB(totalBits);
-  const totalCosts = totalCost(totalGB);
-  return totalCosts;
-};
-
 function calculateUserBits(numCompany, numUsersperCompany, percentUsers) {
   const numofUsers = Math.round(
-    (numCompany * numUsersperCompany * percentUsers) / 100
+    (numCompany * numUsersperCompany * percentUsers) / 100,
   );
   return numofUsers * 1134;
 }
@@ -69,7 +43,7 @@ function companyCommentsToBits(numCompanyComments) {
 
 function bitsToGiB(bits) {
   const bytes = bits / 8;
-  const gibibytes = bytes / Math.pow(2, 30);
+  const gibibytes = bytes / 2 ** 30;
   return gibibytes.toFixed(2);
 }
 
@@ -81,3 +55,28 @@ function totalCost(gib) {
   }
   return cost;
 }
+
+export const mathLogic = (
+  numCompany,
+  numUsersperCompany,
+  percentUsers,
+  numListings,
+  numRooms,
+  numMessages,
+  numCategories,
+  numParams,
+) => {
+  const totalBits = calculateUserBits(numCompany, numUsersperCompany, percentUsers)
+    + listingBits(numListings)
+    + roomsBits(numRooms)
+    + messagesBits(numMessages)
+    + categoriestoBits(numCategories)
+    + paramsToBits(numParams)
+    + advertisementsToBits(4)
+    + listingBookmarkToBits(4)
+    + companyBookmarkToBits(4)
+    + companyCommentsToBits(2);
+  const totalGB = bitsToGiB(totalBits);
+  const totalCosts = totalCost(totalGB);
+  return totalCosts;
+};
