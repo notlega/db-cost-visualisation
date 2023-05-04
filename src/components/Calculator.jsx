@@ -1,24 +1,58 @@
 import React, { useState } from 'react';
-import ReactTooltip from 'react-tooltip';
 import Results from './results';
 import Tippy from '@tippyjs/react';
 import { mathLogic } from './mathLogic';
 
 const App = () => {
-  const [rows, setRows] = useState(0);
-  const [table, setTable] = useState('');
-  const [cost, setCost] = useState(0);
   const [showResults, setShowResults] = useState(false);
-
-  mathLogic()
-
-
-
-
+  const [inputs, setInputs] = useState({
+    numCompany: 200,
+    numUsersperCompany: 1,
+    percentUsers: 80,
+    numListings: 10,
+    numRooms: 5,
+    numMessages: 10,
+    numCategories: 25,
+    numParams: 10,
+  });
+  const [result, setResult] = useState(0);
 
   function handleFormSubmit(event) {
     event.preventDefault();
+    const calculatedResult = mathLogic(
+      inputs.numCompany,
+      inputs.numUsersperCompany,
+      inputs.percentUsers,
+      inputs.numListings,
+      inputs.numRooms,
+      inputs.numMessages,
+      inputs.numCategories,
+      inputs.numParams
+    );
+    setResult(calculatedResult);
     setShowResults(true);
+  }
+
+  const handleInputChange = (event, inputName) => {
+    setInputs({
+      ...inputs,
+      [inputName]: Number(event.target.value),
+    });
+  };
+
+  function handleReset() {
+    setShowResults(false);
+    setResult(0);
+    setInputs({
+      numCompany: 200,
+      numUsersperCompany: 1,
+      percentUsers: 80,
+      numListings: 10,
+      numRooms: 5,
+      numMessages: 10,
+      numCategories: 25,
+      numParams: 10,
+    });
   }
 
   const styles = {
@@ -140,43 +174,51 @@ const App = () => {
                   label: 'Number of companies',
                   defaultValue: 200,
                   tooltip: 'Number of companies.',
+                  inputName: 'numCompany',
                 },
                 {
                   label: 'Number of users per company',
                   defaultValue: 1,
                   tooltip: 'Number of users per company.',
+                  inputName: 'numUsersperCompany',
                 },
                 {
                   label: '% users active (used to calculate the scale)',
                   defaultValue: 80,
                   tooltip: '% of users active.',
+                  inputName: 'numUsersActive',
                 },
                 {
                   label: 'Number of listings per user per year',
                   defaultValue: 10,
                   tooltip: 'Number of listings per user per year.',
+                  inputName: 'numListings',
                 },
                 {
                   label: 'Number of chats opened per listing',
                   defaultValue: 5,
                   tooltip: 'Number of chats opened per listing.',
+                  inputName: 'numRooms',
                 },
                 {
                   label: 'Number of messages per chat',
                   defaultValue: 10,
                   tooltip: 'Number of messages per chat.',
+                  inputName: 'numMessages',
                 },
                 {
                   label: 'Number of categories',
                   defaultValue: 25,
                   tooltip: 'Number of categories.',
+                  inputName: 'numCategories',
                 },
                 {
                   label: 'Number of Params per category',
                   defaultValue: 10,
                   tooltip: 'Number of parameters per category.',
+                  inputName: 'numParams',
                 },
-              ].map(({ label, defaultValue, tooltip }) => (
+              ].map(({ label, defaultValue, tooltip, inputName }) => (
                 <tr key={label}>
                   <td style={tdStyles}>
                     {label}
@@ -191,6 +233,7 @@ const App = () => {
                       type="number"
                       defaultValue={defaultValue}
                       style={inputStyles}
+                      onChange={(event) => handleInputChange(event, inputName)}
                     />
                   </td>
                 </tr>
@@ -207,6 +250,7 @@ const App = () => {
                   </button>
                   <button
                     type="reset"
+                    onClick={handleReset}
                     style={{
                       ...resetButtonStyles,
                       marginLeft: '1rem',
@@ -219,7 +263,9 @@ const App = () => {
             </tbody>
             <tbody>
               <tr>
-                <td colSpan="2">{showResults ? <Results /> : null}</td>
+                <td colSpan="2">
+                  {showResults ? <Results result={result} /> : null}
+                </td>
               </tr>
             </tbody>
           </table>
