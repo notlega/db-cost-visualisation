@@ -7,6 +7,7 @@ const App = () => {
   const [rows, setRows] = useState(0);
   const [table, setTable] = useState('');
   const [cost, setCost] = useState(0);
+  const [showResults, setShowResults] = useState(false);
 
   const enumValues = {
     contentType: 32,
@@ -33,6 +34,11 @@ const App = () => {
     const costPerRow = calculateCostPerRow(table);
     setCost(costPerRow * rows);
   };
+
+  function handleFormSubmit() {
+    setShowResults(true);
+  }
+
   const styles = {
     backgroundColor: 'white',
     height: '100vh',
@@ -88,13 +94,14 @@ const App = () => {
     color: 'darkblue',
     border: 'none',
     borderRadius: '8px',
-    padding: '1rem 2rem',
+    padding: '1rem',
     fontSize: '0.9rem',
     fontWeight: 'bold',
     marginTop: '1rem',
     cursor: 'pointer',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
     transition: 'all 0.3s ease-in-out',
+    width: '100px',
   };
 
   const headerStyle = {
@@ -103,7 +110,7 @@ const App = () => {
     textAlign: 'center',
   };
   const subheaderStyle = {
-    marginBottom: '-1rem',
+    marginBottom: '2rem',
     fontSize: '1.5rem',
     fontWeight: 'normal',
     textAlign: 'center',
@@ -199,16 +206,29 @@ const App = () => {
                   </td>
                 </tr>
               ))}
+              {/* submit and reset buttons */}
+              <tr>
+                <td colSpan="2" style={{ textAlign: 'right' }}>
+                  <button onClick={handleFormSubmit} style={buttonStyles}>
+                    Submit
+                  </button>
+                  <button
+                    type="reset"
+                    style={{
+                      ...buttonStyles,
+                      marginLeft: '1rem',
+                    }}
+                  >
+                    Reset
+                  </button>
+                </td>
+              </tr>
             </tbody>
-            {/* // submit and reset buttons */}
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
-
-            <tr>
-              <td>
-                <Results />
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td colSpan="2">{showResults ? <Results /> : null}</td>
+              </tr>
+            </tbody>
           </table>
         </form>
       </div>
