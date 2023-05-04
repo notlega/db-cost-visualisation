@@ -69,3 +69,15 @@ Each enum value is 32 bits
 | `notificationtype` | `[TAB1, TAB2]`                                               |
 | `parametertype`    | `[WEIGHT, DIMENSION, TWO CHOICES, MANY CHOICES, OPEN ENDED]` |
 | `usercontacts`     | `[whatsapp, phone, telegram, facebook, email]`               |
+
+## Default Values
+
+Number of companies (default 200)
+Number of user per companies (default 1)
+% users active (this is what we use to calculate the scale) (default 100%)
+Number of listing per user per month (default 6)
+Number of chat opened per listing (default 6)
+Number of messages per chat (default 15)
+Number of categories (default 25)
+Number of Params per categories (default 10)
+Number of bookmarks per user (default 10)
