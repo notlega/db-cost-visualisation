@@ -35,7 +35,8 @@ const App = () => {
     setCost(costPerRow * rows);
   };
 
-  function handleFormSubmit() {
+  function handleFormSubmit(event) {
+    event.preventDefault();
     setShowResults(true);
   }
 
@@ -137,7 +138,7 @@ const App = () => {
         Determine how much the database would cost as per your needs
       </h2>
       <div style={styles}>
-        <form>
+        <form onSubmit={(event) => handleFormSubmit(event)}>
           <table style={tableStyles}>
             <thead>
               <tr>
@@ -209,7 +210,11 @@ const App = () => {
               {/* submit and reset buttons */}
               <tr>
                 <td colSpan="2" style={{ textAlign: 'right' }}>
-                  <button onClick={handleFormSubmit} style={buttonStyles}>
+                  <button
+                    type="submit"
+                    onClick={handleFormSubmit}
+                    style={buttonStyles}
+                  >
                     Submit
                   </button>
                   <button
