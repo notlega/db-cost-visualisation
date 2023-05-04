@@ -44,14 +44,14 @@ function bitsToGB(bits) {
 }
 
 
-
-function totalCost(gb){
-    var cost = 0;
-    if(gb>5){
-        cost = (gb-5)*0.1;
-        return cost;
-    }
-    return cost;
+// fix to 2 decimal places
+function totalCost(gb) {
+  let cost = 0;
+  if (gb > 5) {
+    cost = (gb - 5) * 0.1;
+    cost = +cost.toFixed(2); // round to 2 decimal places
+  }
+  return cost;
 }
 
 
