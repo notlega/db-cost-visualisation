@@ -9,9 +9,12 @@
     "clean-i": "pnpm install --frozen-lockfile"
   },
   "dependencies": {
+    "@tippyjs/react": "^4.2.6",
     "next": "13.3.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-tooltip": "^5.11.1",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "eslint": "^8.39.0",
@@ -21,6 +24,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.2"
   }
 }
