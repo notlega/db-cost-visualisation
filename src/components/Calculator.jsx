@@ -118,11 +118,10 @@ const App = () => {
   };
 
   const subheaderStyle = {
-    marginBottom: '2rem',
+    marginBottom: '3rem',
     fontSize: '1.5rem',
     fontWeight: 'normal',
     textAlign: 'center',
-    margin: '1rem auto',
     color: '#555',
   };
 
