@@ -81,32 +81,30 @@ const App = () => {
 
   const thStyles = {
     backgroundColor: 'white',
+    font: '0.8rem Roboto, sans-serif',
     color: 'darkblue',
     padding: '1rem',
     textAlign: 'left',
     borderBottom: '1px solid white',
     textTransform: 'uppercase',
-    fontSize: '0.8rem',
     fontWeight: 'bold',
   };
 
   const tdStyles = {
     color: 'white',
-    // make text bold
-    fontWeight: 'bold',
+    font: 'bold 0.9rem Roboto, sans-serif',
     padding: '1rem',
     borderBottom: '1px solid white',
-    fontSize: '0.9rem',
   };
 
   const inputStyles = {
     backgroundColor: 'white',
     border: 'none',
     color: 'black',
+    font: '0.9rem Roboto, sans-serif',
     width: '100%',
     padding: '0.5rem',
     boxSizing: 'border-box',
-    fontSize: '0.9rem',
   };
 
   const buttonStyles = {
@@ -114,11 +112,10 @@ const App = () => {
     alignItems: 'center',
     backgroundColor: '#bf0202',
     color: 'white',
+    font: 'bold 0.9rem Roboto, sans-serif',
     border: 'none',
     borderRadius: '8px',
     padding: '1rem',
-    fontSize: '0.9rem',
-    fontWeight: 'bold',
     marginTop: '1rem',
     cursor: 'pointer',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
@@ -136,10 +133,12 @@ const App = () => {
     // bring the header closer to the form
     marginBottom: '-1rem',
     textAlign: 'center',
+    font: 'bold 2rem/1.5 Roboto, sans-serif',
   };
 
   const subheaderStyle = {
-    marginBottom: '3rem',
+    font: '1.5rem Roboto, sans-serif',
+    marginBottom: '4rem',
     fontSize: '1.5rem',
     fontWeight: 'normal',
     textAlign: 'center',
