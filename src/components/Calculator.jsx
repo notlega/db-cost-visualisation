@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ReactTooltip from 'react-tooltip';
+import Results from './results';
+import Tippy from '@tippyjs/react';
 
 
 const App = () => {
@@ -95,13 +97,40 @@ const App = () => {
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
     transition: 'all 0.3s ease-in-out',
   };
+
   const headerStyle = {
+    // bring the header closer to the form
+    marginBottom: '-1rem',
     textAlign: 'center'
   }
+  const subheaderStyle = {
+    marginBottom: '-1rem',
+    fontSize: '1.5rem',
+    fontWeight: 'normal',
+    textAlign: 'center',
+    margin: '1rem auto',
+    color: '#555'
+  };
+  const tooltipStyle = {
+    display: 'inline-block',
+    marginLeft: '8px',
+    padding: '2px 6px',
+    borderRadius: '50%',
+    backgroundColor: '#f0f0f0',
+    color: '#333',
+    fontSize: '12px',
+    lineHeight: 1,
+    textAlign: 'center',
+    cursor: 'help',
+  };
+
   return (
     <div>
-      <h1 style={headerStyle}>Database Cost Calculator</h1>
+
+      <h1 style={headerStyle}>Database Calculator</h1>
+      <h2 style={subheaderStyle}>Determine how much the database would cost as per your needs</h2>
       <div style={styles}>
+
         <form>
           <table style={tableStyles}>
             <thead>
@@ -112,8 +141,20 @@ const App = () => {
             </thead>
             <tbody>
               <tr>
-                <td style={tdStyles} data-tip="Number of companies.">Number of companies (default 200)</td>
-                <td style={tdStyles}><input type="number" defaultValue={200} style={inputStyles} /></td>
+                <td style={tdStyles}>
+                  Number of companies (default 200)
+                  <Tippy
+                    content="Number of companies."
+                    theme="custom-white-box"
+                  >
+                    <span className="tooltip-icon" style={tooltipStyle}>
+                      i
+                    </span>
+                  </Tippy>
+                </td>
+                <td style={tdStyles}>
+                  <input type="number" defaultValue={200} style={inputStyles} />
+                </td>
               </tr>
               <tr>
                 <td style={tdStyles} data-tip="Number of users per company.">Number of users per company (default 1)</td>
@@ -144,10 +185,25 @@ const App = () => {
                 <td style={tdStyles}><input type="number" defaultValue={10} style={inputStyles} /></td>
               </tr>
             </tbody>
+            {/* // submit and reset buttons */}
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+
+
+            <tr>
+
+              <td>
+                <Results />
+              </td>
+            </tr>
+
           </table>
-          <button style={{ ...buttonStyles, marginTop: '2rem' }}>Submit</button>
+
+
         </form>
+
       </div>
+
     </div>
 
 
