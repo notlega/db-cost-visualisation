@@ -54,7 +54,7 @@ The size of an array depends on the datatype and the size of the elements within
 | `rooms`                    | 128 + 128 + 128 + 96 + 32                                                                      |
 | `sibkeys`                  | `text` + 32 + `text`                                                                           |
 | `user_bookmarks`           | 32 + 128 + 128 + 96                                                                            |
-| `users`                    | 128 + `text` + `text` + `text` + `text` + `text` + `usercontacts` + 32 + 16 + 32 + 96 + `text` |
+| `users`                    | 128 + `text(22 chars)` + `text(7 chars)` + `text(8 chars)` + `text(24 chars)` + `text(11 chars)` + `usercontacts` + 32 + 16 + 32 + 96 + `text(150 chars)` |
 | `users_comments`           | 32 + 128 + `text`+ 96                                                                          |
 
 ## Custom Enum Sizing + Values Table
