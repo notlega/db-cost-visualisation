@@ -3,7 +3,8 @@
 export const mathLogic = (numCompany,numUsersperCompany,percentUsers,numListings,numRooms,numMessages,numCategories,numParams) => {
     const totalBits = calculateUserBits(numCompany,numUsersperCompany,percentUsers) + listingBits(numListings) + roomsBits(numRooms) + messagesBits(numMessages) + categoriestoBits(numCategories) + paramsToBits(numParams);
     const totalGB = bitsToGB(totalBits);
-    return totalGB;
+    const totalCosts = totalCost(totalGB);
+    return totalCosts;
 }
 
 function calculateUserBits(numCompany,numUsersperCompany,percentUsers){
@@ -44,5 +45,16 @@ function bitsToGB(bits) {
 
 
 
+function totalCost(gb){
+    var cost = 0;
+    if(gb>5){
+        cost = (gb-5)*0.1;
+        return cost;
+    }
+    return cost;
+}
 
-console.log(totalBits)
+
+
+
+

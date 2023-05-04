@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import Results from './results';
 import Tippy from '@tippyjs/react';
+import { mathLogic } from './mathLogic';
 
 const App = () => {
   const [rows, setRows] = useState(0);
@@ -9,31 +10,11 @@ const App = () => {
   const [cost, setCost] = useState(0);
   const [showResults, setShowResults] = useState(false);
 
-  const enumValues = {
-    contentType: 32,
-    dataType: 32,
-    listingType: 32,
-    notificationType: 32,
-    parameterType: 32,
-    userContacts: 32,
-  };
+  mathLogic()
 
-  const calculateCostPerRow = (table) => {
-    switch (table) {
-      case 'access_token':
-        return 32 + 32 + 128 + 16 + 96 + 96 + 96;
-      case 'advertisements':
-        return 32 + 32 + 16 + 96 + 96 + 96 + 96;
-      // Add more cases for each table using the provided calculations
-      default:
-        return 0;
-    }
-  };
 
-  const calculateCost = () => {
-    const costPerRow = calculateCostPerRow(table);
-    setCost(costPerRow * rows);
-  };
+
+
 
   function handleFormSubmit(event) {
     event.preventDefault();
