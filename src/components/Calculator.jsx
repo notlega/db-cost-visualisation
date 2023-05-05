@@ -178,19 +178,22 @@ function App() {
                 {
                   label: 'Number of companies',
                   defaultValue: 200,
-                  tooltip: 'The estimated number of companies which will be participating in the usage of the marketplace.',
+                  tooltip:
+                    'The estimated number of companies which will be participating in the usage of the marketplace.',
                   inputName: 'numCompany',
                 },
                 {
                   label: 'Number of users per company',
                   defaultValue: 1,
-                  tooltip: 'An estimate of the number of users in each company.',
+                  tooltip:
+                    'An estimate of the number of users in each company.',
                   inputName: 'numUsersperCompany',
                 },
                 {
                   label: 'Percentage of active users',
                   defaultValue: 80,
-                  tooltip: 'An estimate of 80% has been set to default to estimate the percentage of total users created who are actively using the marketplace.',
+                  tooltip:
+                    'An estimate of 80% has been set to default to estimate the percentage of total users created who are actively using the marketplace.',
                   inputName: 'numUsersActive',
                 },
                 {
@@ -208,7 +211,8 @@ function App() {
                 {
                   label: 'Number of messages per chat',
                   defaultValue: 10,
-                  tooltip: 'An estimate of the number of messages in a chat room.',
+                  tooltip:
+                    'An estimate of the number of messages in a chat room.',
                   inputName: 'numMessages',
                 },
                 {
@@ -220,7 +224,8 @@ function App() {
                 {
                   label: 'Number of Parameters per category',
                   defaultValue: 10,
-                  tooltip: 'The estimated number of parameters in each category.',
+                  tooltip:
+                    'The estimated number of parameters in each category.',
                   inputName: 'numParams',
                 },
               ].map(({ label, defaultValue, tooltip, inputName }) => (
