@@ -77,6 +77,6 @@ export const mathLogic = (
     + companyBookmarkToBits(4)
     + companyCommentsToBits(2);
   const totalGB = bitsToGiB(totalBits);
-  const totalCosts = totalCost(totalGB);
+  const totalCosts = totalCost(totalGB) * 12;
   return totalCosts;
 };
